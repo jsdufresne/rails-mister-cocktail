@@ -25,6 +25,12 @@ class DosesController < ApplicationController
   end
 
   def destroy
+    @dose = Dose.find(params[:id])
+    @dose.destroy
+    respond_to do |format|
+      format.html { redirect_to cocktails_path, notice: 'Dose was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
     private
@@ -32,7 +38,7 @@ class DosesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dose_params
-     params.require(:dose).permit(:description)
+     params.require(:dose).permit(:description, :ingredient_id)
     end
 
 end
