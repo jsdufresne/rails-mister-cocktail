@@ -1,4 +1,6 @@
-<%= simple_form_for(@cocktail) do |f| %>
+<%= simple_form_for(@cocktail, html: { multipart: true, class: "dropzone"}) do |f| %>
   <%= f.input :name, placeholder: "Mojito" %>
+  <%= f.file_field :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <%= f.button :submit, class: "btn btn-primary"  %>
 <% end %>
